@@ -1,0 +1,87 @@
+From: Ruben Undheim <ruben.undheim@gmail.com>
+Date: Tue, 14 Jun 2016 18:46:08 +0200
+Subject: This makes sure that the CXXFLAGS given by the Debian build system
+ are not overwritten,
+ but prepended. Additionally unwanted CXXFLAGS are removed.
+
+---
+ icebram/Makefile  | 3 ++-
+ icemulti/Makefile | 2 +-
+ icepack/Makefile  | 2 +-
+ icepll/Makefile   | 2 +-
+ iceprog/Makefile  | 4 ++--
+ icetime/Makefile  | 2 +-
+ 6 files changed, 8 insertions(+), 7 deletions(-)
+
+--- a/icebram/Makefile
++++ b/icebram/Makefile
+@@ -1,6 +1,5 @@
+ include ../config.mk
+ LDLIBS = -lm -lstdc++
+-CXXFLAGS = -MD -O0 -ggdb -Wall -std=c++11 -I/usr/local/include
+ 
+ ifeq ($(STATIC),1)
+ LDFLAGS += -static
+--- a/icemulti/Makefile
++++ b/icemulti/Makefile
+@@ -1,6 +1,5 @@
+ include ../config.mk
+ LDLIBS = -lm -lstdc++
+-CXXFLAGS = -MD -O0 -ggdb -Wall -std=c++11
+ 
+ ifeq ($(STATIC),1)
+ LDFLAGS += -static
+--- a/icepack/Makefile
++++ b/icepack/Makefile
+@@ -1,6 +1,5 @@
+ include ../config.mk
+ LDLIBS = -lm -lstdc++
+-CXXFLAGS = -MD -O0 -ggdb -Wall -std=c++11 -I/usr/local/include
+ MXEGCC = /usr/local/src/mxe/usr/bin/i686-pc-mingw32-gcc
+ 
+ ifeq ($(STATIC),1)
+--- a/icepll/Makefile
++++ b/icepll/Makefile
+@@ -1,6 +1,5 @@
+ include ../config.mk
+ LDLIBS = -lm -lstdc++
+-CXXFLAGS = -MD -O0 -ggdb -Wall -std=c++11 -I/usr/local/include
+ 
+ ifeq ($(STATIC),1)
+ LDFLAGS += -static
+--- a/iceprog/Makefile
++++ b/iceprog/Makefile
+@@ -2,11 +2,9 @@
+ 
+ ifneq ($(shell uname -s),Darwin)
+   LDLIBS = -L/usr/local/lib -lm
+-  CFLAGS = -MD -O0 -ggdb -Wall -std=c99 -I/usr/local/include
+ else
+   LIBFTDI_NAME = $(shell $(PKG_CONFIG) --exists libftdi1 && echo ftdi1 || echo ftdi)
+-  LDLIBS = -L/usr/local/lib -l$(LIBFTDI_NAME) -lm
+-  CFLAGS = -MD -O0 -ggdb -Wall -std=c99 -I/usr/local/include
++  LDLIBS = -l$(LIBFTDI_NAME) -lm
+ endif
+ 
+ ifeq ($(STATIC),1)
+--- a/icetime/Makefile
++++ b/icetime/Makefile
+@@ -1,6 +1,6 @@
+ include ../config.mk
+ LDLIBS = -lm -lstdc++
+-CXXFLAGS = -MD -O0 -ggdb -Wall -std=c++11 -I/usr/local/include -DPREFIX='"$(PREFIX)"' -DCHIPDB_SUBDIR='"$(CHIPDB_SUBDIR)"'
++CXXFLAGS += -DPREFIX='"$(PREFIX)"' -DCHIPDB_SUBDIR='"$(CHIPDB_SUBDIR)"'
+ 
+ ifeq ($(STATIC),1)
+ LDFLAGS += -static
+--- a/config.mk
++++ b/config.mk
+@@ -4,6 +4,8 @@
+ DESTDIR ?=
+ PREFIX ?= /usr/local
+ CHIPDB_SUBDIR ?= icebox
++CXXFLAGS += -Wall -std=c++11
++CFLAGS += -Wall -std=c99
+ 
+ ifeq ($(MXE),1)
+ EXE = .exe

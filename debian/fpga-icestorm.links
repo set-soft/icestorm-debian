@@ -1,0 +1,8 @@
+/usr/share/fpga-icestorm/python/icebox_chipdb /usr/bin/icebox_chipdb
+/usr/share/fpga-icestorm/python/icebox_diff /usr/bin/icebox_diff
+/usr/share/fpga-icestorm/python/icebox_explain /usr/bin/icebox_explain
+/usr/share/fpga-icestorm/python/icebox_colbuf /usr/bin/icebox_colbuf
+/usr/share/fpga-icestorm/python/icebox_html /usr/bin/icebox_html
+/usr/share/fpga-icestorm/python/icebox_maps /usr/bin/icebox_maps
+/usr/share/fpga-icestorm/python/icebox_vlog /usr/bin/icebox_vlog
+

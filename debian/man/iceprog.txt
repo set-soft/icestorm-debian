@@ -1,0 +1,48 @@
+NAME
+  iceprog - simple programming tool for FTDI-based Lattice iCE programmers
+
+SYNOPSIS
+  iceprog [options] <filename>
+
+DESCRIPTION
+
+Notes for iCEstick (iCE40HX-1k devel board):
+
+  An unmodified iCEstick can only be programmed via the serial flash.
+  Direct programming of the SRAM is not supported. For direct SRAM
+  programming the flash chip and one zero ohm resistor must be desoldered
+  and the FT2232H SI pin must be connected to the iCE SPI_SI pin, as shown
+  in this picture: http://www.clifford.at/gallery/2014-elektronik/IMG_20141115_183838
+
+
+Notes for the iCE40-HX8K Breakout Board:
+
+  Make sure that the jumper settings on the board match the selected
+  mode (SRAM or FLASH). See the iCE40-HX8K user manual for details.
+
+
+OPTIONS
+
+    -d <device-string>  use the specified USB device:
+            d:<devicenode>                (e.g. d:002/005)
+            i:<vendor>:<product>          (e.g. i:0x0403:0x6010)
+            i:<vendor>:<product>:<index>  (e.g. i:0x0403:0x6010:0)
+            s:<vendor>:<product>:<serial-string>
+    -I [ABCD]  connect to the specified interface on the FTDI chip
+    -r  read entire flash (32Mb / 4MB) and write to file
+    -R  read first 256 kB from flash and write to file
+    -c  do not write flash, only verify (check)
+    -b  bulk erase entire flash before writing
+    -n  do not erase flash before writing
+    -S  perform SRAM programming
+    -t  just read the flash ID sequence
+    -v  verbose output
+
+ 
+
+
+AUTHOR
+  This manual page was written by Ruben Undheim <ruben.undheim@gmail.com> for the Debian project (and may be used by others).
+
+
+

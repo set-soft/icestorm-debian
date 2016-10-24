@@ -1,0 +1,95 @@
+fpga-icestorm (0~20161022git9b722cd-1) UNRELEASED; urgency=medium
+
+  [ Ruben Undheim ]
+  * Addded 'Tag+="uaccess"' to udev rule. Thanks Petter! (Closes: #840380)
+
+  [ Salvador Eduardo Tropea ]
+  * New upstream version
+  * debian/patches/01_installpath.patch:
+    - Reduced to just the Python stuff
+  * debian/patches/03_cxxflags.patch:
+    - Moved C*FLAGS to config.mk
+  * debian/patches/*reproducible*
+    - Removed, no longer needed
+
+ -- Salvador Eduardo Tropea <salvador@inti.gob.ar>  Mon, 24 Oct 2016 10:05:24 -0300
+
+fpga-icestorm (0~20160913git266e758-2) unstable; urgency=medium
+
+  * debian/patches/0004-Make-the-build-reproducible.patch
+    - Another patch for reproducibility from Chris Lamb. Thanks!
+      (Closes: #840098)
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Sun, 09 Oct 2016 00:59:44 +0200
+
+fpga-icestorm (0~20160913git266e758-1) unstable; urgency=low
+
+  * New upstream version
+  * debian/man/icebram.txt:
+    - New man page for new command
+  * debian/patches/03_cxxflags.patch
+    - Also do this for the new command
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Sun, 18 Sep 2016 12:21:07 +0200
+
+fpga-icestorm (0~20160218gitf2b2549-3) unstable; urgency=medium
+
+  * debian/control:
+    - Changed dependency on fpga-icestorm-chipdb from "Suggests:" to
+      "Recommends:".
+  * debian/patches/01_installpath.patch:
+    - Fix hard-coded path to chipdb in icetime (Closes: #827176)
+  * Updated all other patches such that they can be imported with gbp-pq.
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Tue, 14 Jun 2016 19:22:54 +0200
+
+fpga-icestorm (0~20160218gitf2b2549-2) unstable; urgency=medium
+
+  [ Daniel Shahaf ]
+  * Fixed reproducibility (Closes: 823616) - thanks for the patch!
+
+  [ Ruben Undheim ]
+  * debian/control:
+    - Updated Standards version to 3.9.8 - no changes
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Fri, 06 May 2016 20:45:23 +0200
+
+fpga-icestorm (0~20160218gitf2b2549-1) unstable; urgency=medium
+
+  [ Sebastian Kuzminsky ]
+  * New upstream version
+  * debian/man:
+    - Added man pages for new commands: icetime and icepll
+  * debian/patches:
+    - Added patch override-CXX.patch so that the Debian build system decides
+      which compiler to use.
+    - Refreshed patches
+  * debian/rules:
+    - Set PREFIX=/usr in override_dh_auto_install
+
+  [ Ruben Undheim ]
+  * debian/control:
+    - Updated Standards version to 3.9.7
+  * Added debian/patches/fix_spelling_in_binaries.patch
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Thu, 25 Feb 2016 23:59:47 +0100
+
+fpga-icestorm (0~20151006git103e6fd-3) unstable; urgency=medium
+
+  * Set changelog date to UTC with LC_ALL=C to make man pages reproducible.
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Fri, 19 Feb 2016 17:46:30 +0100
+
+fpga-icestorm (0~20151006git103e6fd-2) unstable; urgency=medium
+
+  * Added udev rules so that members of the plugdev group can program
+    the FPGA.
+  * debian/control: Updated the Vcs-Git path so that it uses a secure protocol.
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Sat, 06 Feb 2016 12:34:47 +0100
+
+fpga-icestorm (0~20151006git103e6fd-1) unstable; urgency=low
+
+  * Initial release (Closes: #801229)
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Mon, 16 Nov 2015 19:57:40 +0100

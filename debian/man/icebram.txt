@@ -1,0 +1,27 @@
+NAME
+  icebram - Replace BRAM initialization data in a .asc file
+
+SYNOPSIS
+  icebram [options] <from_hexfile> <to_hexfile>
+  icebram [options] -g <width> <depth>
+
+DESCRIPTION
+  Replace BRAM initialization data in a .asc file. This can be used for example to replace firmware images without re-running synthesis and place&route.
+
+
+OPTIONS
+  -g   generate a hex file with random contents. 
+       use this to generate the hex file used during synthesis, then
+       use the same file as <from_hexfile> later.
+
+  -v   verbose (repeat to increase verbosity)
+
+SEE ALSO
+  icepack(1) 
+
+
+AUTHOR
+  This manual page was written by Ruben Undheim <ruben.undheim@gmail.com> for the Debian project (and may be used by others).
+
+
+

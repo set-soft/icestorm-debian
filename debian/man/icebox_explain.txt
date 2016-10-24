@@ -1,0 +1,24 @@
+NAME
+  icebox-explain - explain content of bitstream file in readable .txt format
+
+SYNOPSIS
+  icebox-explain [options] [bitmap.txt]
+
+DESCRIPTION
+  This tool can be used to get an understanding of the content of a .txt file that has been converted from a binary bistream with iceunpack.
+
+OPTIONS
+  -b    print config bit names for each config statement
+  -m    print tile config bitmaps
+  -A    don't skip uninteresting tiles
+  -t '<x-coordinate> <y-coordinate>'   print only the specified tile
+
+ 
+SEE ALSO
+  iceunpack(1)
+
+AUTHOR
+  This manual page was written by Ruben Undheim <ruben.undheim@gmail.com> for the Debian project (and may be used by others).
+
+
+

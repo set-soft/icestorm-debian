@@ -1,0 +1,51 @@
+NAME
+
+    icetime - generate timing estimates
+
+
+SYNOPSIS
+
+    icetime [OPTIONS] FILE.asc
+
+
+DESCRIPTION
+
+    Generate timing estimates from a textual bitstream file (such as
+    output from arachne-pnr).
+
+
+OPTIONS
+
+    -p <pcf_file>  
+        Specify PCF file to use (needed for correct IO pin names).
+
+    -P <chip_package>  
+        Specify chip package (needed for correct IO pin names).
+
+    -g <net_index>  Write a graphviz description of the interconnect tree
+        that includes the given net to 'icetime_graph.dot'.
+
+    -o <output_file>  Write verilog netlist to the named file. Use '-'
+        for stdout.
+
+    -r <output_file>  Write timing report to the named file (instead
+        of stdout).
+
+    -d lp1k|hx1k|lp8k|hx8k  Select the device type (default = lp variant).
+
+    -m  Enable max_span_hack for conservative timing estimates.
+
+    -i  Only consider interior timing paths (not to/from IOs).
+
+    -t  Print a timing estimate (based on topological timing
+        analysis).
+
+    -T <net_name>  Print a timing estimate for the specified net.
+
+    -v  Verbose mode (print all interconnect trees).
+
+
+AUTHOR
+
+This manual page was written by Sebastian Kuzminsky <seb@highlab.com>
+for the Debian project (and may be used by others).

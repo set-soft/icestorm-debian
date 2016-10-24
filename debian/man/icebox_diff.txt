@@ -1,0 +1,16 @@
+NAME
+  icebox_diff - compare two bitstreams
+
+SYNOPSIS
+  icebox_diff [options]
+
+
+
+ 
+
+
+AUTHOR
+  This manual page was written by Ruben Undheim <ruben.undheim@gmail.com> for the Debian project (and may be used by others).
+
+
+

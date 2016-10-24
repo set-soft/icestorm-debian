@@ -1,0 +1,27 @@
+NAME
+  icebox_vlog - convert bitstream in .txt format to verilog
+
+SYNOPSIS
+  icebox_vlog [options] [bitmap.txt]
+
+DESCRIPTIOIN
+  This tools converts a bitstream in .txt format (already converted with iceunpack) to a Verilog representation.
+
+OPTIONS
+    -s  strip comments from output
+    -S  strip comments about interconn wires from output
+    -l  convert io tile port names to chip pin numbers
+    -L  lookup symbol names (using .sym statements in input)
+    -n <module-name>   name for the exported module (default: "chip")
+    -p <pcf-file>  use the set_io command from the specified pcf file
+    -P <pcf-file>   like -p, enable some hacks for pcf files created by the iCEcube2 placer.
+    -c  collect multi-bit ports
+    -R  enable IeRen database checks
+    -D  enable exactly-one-driver checks
+
+
+AUTHOR
+  This manual page was written by Ruben Undheim <ruben.undheim@gmail.com> for the Debian project (and may be used by others).
+
+
+

@@ -1,0 +1,14 @@
+Document: fpga-icestorm
+Title: Documentation for the Icestorm project
+Abstract: Tools to handle the bitstream format of Lattice iCE40 FPGAs
+ Project IceStorm aims at documenting the bitstream format of Lattice iCE40
+ FPGAs and providing simple tools for analyzing and creating bitstream files. At
+ the moment the focus of the project is on the HX1K-TQ144 and HX8K-CT256
+ devices, but most of the information is device-independent.
+ .
+ These documents describe how icestorm works.
+Section: Science/Electronics
+
+Format: HTML
+Index: /usr/share/doc/fpga-icestorm/html/index.html
+Files: /usr/share/doc/fpga-icestorm/html/*.html

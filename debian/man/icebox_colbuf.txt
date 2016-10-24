@@ -1,0 +1,19 @@
+NAME
+  icebox_colbuf - manage colbuf bits
+
+SYNOPSIS
+  icebox-colbuf [options] [input.txt [output.txt]]
+
+
+OPTIONS
+  -c    check colbuf bits
+  -f    fix colbuf bits
+
+ 
+
+
+AUTHOR
+  This manual page was written by Ruben Undheim <ruben.undheim@gmail.com> for the Debian project (and may be used by others).
+
+
+

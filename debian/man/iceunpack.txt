@@ -1,0 +1,27 @@
+NAME
+  iceunpack - Unpacks binary bitstreams for Lattice FPGA to readable .txt file
+
+SYNOPSIS
+  iceunpack [options] [input-file [output-file]]
+
+DESCRIPTION
+  This tool can be used to unpack binary bitstreams for Lattice FPGA. It is part of the icestorm project.
+
+OPTIONS
+  -u    unpack mode (implied when called as 'iceunpack')
+  -v    verbose (repeat to increase verbosity)
+  -b    write cram bitmap as netpbm file
+  -f    write cram bitmap (fill tiles) as netpbm file
+  -c    write cram bitmap (checkerboard) as netpbm file. repeat to flip the selection of tiles
+  -r    write bram data, not cra, to the netpbm file
+  -B0,-B1,-B2,-B3   only include the specified banks in the netpbm file
+
+SEE ALSO
+  icepack(1) 
+
+
+AUTHOR
+  This manual page was written by Ruben Undheim <ruben.undheim@gmail.com> for the Debian project (and may be used by others).
+
+
+

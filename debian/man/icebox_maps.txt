@@ -1,0 +1,23 @@
+NAME
+  icebox_maps - a tool in the icestorm project
+
+SYNOPSIS
+  icebox_maps -m bitmaps
+  icebox_maps -m io_tile_nets_l
+  icebox_maps -m io_tile_nets_r
+  icebox_maps -m io_tile_nets_t
+  icebox_maps -m io_tile_nets_b
+  icebox_maps -m logic_tile_nets
+  icebox_maps -m ramb_tile_nets
+  icebox_maps -m ramt_tile_nets
+
+
+
+ 
+
+
+AUTHOR
+  This manual page was written by Ruben Undheim <ruben.undheim@gmail.com> for the Debian project (and may be used by others).
+
+
+

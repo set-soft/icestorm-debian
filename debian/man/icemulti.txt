@@ -1,0 +1,19 @@
+NAME
+  icemulti - a tool for packing multiple bitstream files into one iCE40 multiboot image file
+
+SYNOPSIS
+  icemulti [options] input-files
+
+
+OPTIONS
+ -c  coldboot mode, power on reset image is selected by CBSEL0/CBSEL1
+ -p0, -p1, -p2, -p3   select power on reset image when not using coldboot mode
+ -o filename   write output image to file instead of stdout
+ -v   verbose (repeat to increase verbosity)
+
+
+AUTHOR
+  This manual page was written by Ruben Undheim <ruben.undheim@gmail.com> for the Debian project (and may be used by others).
+
+
+

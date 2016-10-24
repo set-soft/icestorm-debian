@@ -1,0 +1,40 @@
+Source: fpga-icestorm
+Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Ruben Undheim <ruben.undheim@gmail.com>
+Section: electronics
+Priority: optional
+Build-Depends: debhelper (>= 9),
+               libftdi-dev,
+               python3,
+               txt2man
+Standards-Version: 3.9.8
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/fpga-icestorm.git
+Vcs-Git: https://anonscm.debian.org/git/debian-science/packages/fpga-icestorm.git
+Homepage: http://www.clifford.at/icestorm/
+
+Package: fpga-icestorm-chipdb
+Architecture: all
+Depends: ${misc:Depends}
+Description: Chip database files for fpga-icestorm
+ Project IceStorm aims at documenting the bitstream format of Lattice iCE40
+ FPGAs and providing simple tools for analyzing and creating bitstream files. At
+ the moment the focus of the project is on the HX1K-TQ144 and HX8K-CT256
+ devices, but most of the information is device-independent.
+ .
+ This package contains the chip database files for fpga-icestorm.
+ 
+
+Package: fpga-icestorm
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         python3
+Recommends: yosys, fpga-icestorm-chipdb
+Suggests: arachne-pnr
+Description: Tools to handle the bitstream format of Lattice iCE40 FPGAs
+ Project IceStorm aims at documenting the bitstream format of Lattice iCE40
+ FPGAs and providing simple tools for analyzing and creating bitstream files. At
+ the moment the focus of the project is on the HX1K-TQ144 and HX8K-CT256
+ devices, but most of the information is device-independent.
+ .
+ This package contains multiple tools needed to handle the bitstream.

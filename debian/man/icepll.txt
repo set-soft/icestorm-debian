@@ -1,0 +1,29 @@
+NAME
+
+    icepll - compute PLL parameters for iCE40
+
+
+SYNOPSIS
+
+    icepll [options]
+
+
+DESCRIPTION
+
+    Computes PLL divisors and VCO frequency, given an input frequency
+    and desired output frequency.
+
+
+OPTIONS
+
+    -i <input_freq_mhz>  PLL Input Frequency (default: 12 MHz)
+
+    -o <output_freq_mhz>  PLL Output Frequency (default: 60 MHz)
+
+    -S  Disable SIMPLE feedback path mode
+
+
+AUTHOR
+
+    This manual page was written by Sebastian Kuzminsky <seb@highlab.com>
+    for the Debian project (and may be used by others).
