@@ -14,12 +14,13 @@ python include path.
 
 --- a/icebox/Makefile
 +++ b/icebox/Makefile
-@@ -15,19 +15,19 @@
+@@ -19,21 +19,21 @@
  	rm -f icebox.pyc iceboxdb.pyc
  
  install: all
 -	mkdir -p $(DESTDIR)$(PREFIX)/share/icebox
 -	mkdir -p $(DESTDIR)$(PREFIX)/bin
+-	cp chipdb-384.txt    $(DESTDIR)$(PREFIX)/share/icebox/
 -	cp chipdb-1k.txt     $(DESTDIR)$(PREFIX)/share/icebox/
 -	cp chipdb-8k.txt     $(DESTDIR)$(PREFIX)/share/icebox/
 -	cp icebox.py         $(DESTDIR)$(PREFIX)/bin/icebox.py
@@ -31,8 +32,10 @@ python include path.
 -	cp icebox_html.py    $(DESTDIR)$(PREFIX)/bin/icebox_html
 -	cp icebox_maps.py    $(DESTDIR)$(PREFIX)/bin/icebox_maps
 -	cp icebox_vlog.py    $(DESTDIR)$(PREFIX)/bin/icebox_vlog
+-	cp icebox_stat.py    $(DESTDIR)$(PREFIX)/bin/icebox_stat
 +	mkdir -p $(DESTDIR)$(PREFIX)/share/fpga-icestorm/chipdb
 +	mkdir -p $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python
++	cp chipdb-384.txt    $(DESTDIR)$(PREFIX)/share/fpga-icestorm/chipdb/
 +	cp chipdb-1k.txt     $(DESTDIR)$(PREFIX)/share/fpga-icestorm/chipdb/
 +	cp chipdb-8k.txt     $(DESTDIR)$(PREFIX)/share/fpga-icestorm/chipdb/
 +	cp icebox.py         $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox.py
@@ -44,6 +47,7 @@ python include path.
 +	cp icebox_html.py    $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox_html
 +	cp icebox_maps.py    $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox_maps
 +	cp icebox_vlog.py    $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox_vlog
++	cp icebox_vlog.py    $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox_stat
  
  uninstall:
  	rm -f $(DESTDIR)$(PREFIX)/bin/icebox.py
