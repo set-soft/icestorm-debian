@@ -1,3 +1,2 @@
-01_installpath.patch
-03_cxxflags.patch
-
+0001-Install-the-python-programs-and-the-iceboxdb-module-.patch
+0002-Fix-MD-and-O0-passed-as-CFLAGS-and-CXXFLAGS.patch

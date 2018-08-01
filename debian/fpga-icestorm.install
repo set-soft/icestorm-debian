@@ -4,3 +4,4 @@ docs/*.svg usr/share/doc/fpga-icestorm/html
 docs/*.html usr/share/doc/fpga-icestorm/html
 docs/*.png usr/share/doc/fpga-icestorm/html
 debian/40-fpga-icestorm.rules lib/udev/rules.d
+debian/at.clifford.icestorm.metainfo.xml usr/share/metainfo

@@ -3,13 +3,15 @@ Upstream-Name: icestorm
 Source: https://github.com/cliffordwolf/icestorm 
 
 Files: *
-Copyright: 2015 Clifford Wolf <clifford@clifford.at>
+Copyright: 2012-2017 Clifford Wolf <clifford@clifford.at>
            2015 Marcus Comstedt <marcus@mc.pp.se>
            2015 Mathias Lasser
+           2017 Roland Lutz
 License: ISC
 
+
 Files: debian/*
-Copyright: 2015 Ruben Undheim <ruben.undheim@gmail.com>
+Copyright: 2015-2018 Ruben Undheim <ruben.undheim@gmail.com>
 License: GPL-2+
 
 
@@ -43,4 +45,3 @@ License: GPL-2+
  .
  On Debian systems, the complete text of the GNU General
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
-
