@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+  <id>at.clifford.icestorm</id>
+  <metadata_license>MIT</metadata_license>
+  <name>fpga-icestorm</name>
+  <summary>Software for handling Lattice Ice FPGAs</summary>
+  <description>
+    <p>
+      fpga-icestorm allows programming some Lattice Ice FPGAs
+      and perform some other actions.
+    </p>
+  </description>
+  <provides>
+    <modalias>usb:v0403p6010d*</modalias>
+  </provides>
+</component>

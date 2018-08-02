@@ -1,0 +1,100 @@
+From: Ruben Undheim <ruben.undheim@gmail.com>
+Date: Fri, 13 Jul 2018 22:38:17 +0200
+Subject: Install the python programs and the iceboxdb module in
+ /usr/share/fpga-icestorm/python,
+ instead of in /usr/bin where upstream wants to put them.
+
+The rationale for this is that icebox imports iceboxdb, so iceboxdb needs
+to be findable by the python importer, but iceboxdb is not useful for any
+program other than icebox, so it should not be in the normal system-wide
+python include path.
+---
+ icebox/Makefile    | 39 ++++++++++++++++++++-------------------
+ icetime/icetime.cc | 24 +-----------------------
+ 2 files changed, 21 insertions(+), 42 deletions(-)
+
+diff --git a/icebox/Makefile b/icebox/Makefile
+index 5f4d47a..9eda354 100644
+--- a/icebox/Makefile
++++ b/icebox/Makefile
+@@ -32,25 +32,26 @@ clean:
+ 	rm -f icebox.pyc iceboxdb.pyc
+ 
+ install: all
+-	mkdir -p $(DESTDIR)$(PREFIX)/share/icebox
+-	mkdir -p $(DESTDIR)$(PREFIX)/bin
+-	cp chipdb-384.txt    $(DESTDIR)$(PREFIX)/share/icebox/
+-	cp chipdb-1k.txt     $(DESTDIR)$(PREFIX)/share/icebox/
+-	cp chipdb-8k.txt     $(DESTDIR)$(PREFIX)/share/icebox/
+-	cp chipdb-5k.txt     $(DESTDIR)$(PREFIX)/share/icebox/
+-	cp chipdb-lm4k.txt   $(DESTDIR)$(PREFIX)/share/icebox/
+-	cp icebox.py         $(DESTDIR)$(PREFIX)/bin/icebox.py
+-	cp iceboxdb.py       $(DESTDIR)$(PREFIX)/bin/iceboxdb.py
+-	cp icebox_chipdb.py  $(DESTDIR)$(PREFIX)/bin/icebox_chipdb$(PY_EXE)
+-	cp icebox_diff.py    $(DESTDIR)$(PREFIX)/bin/icebox_diff$(PY_EXE)
+-	cp icebox_explain.py $(DESTDIR)$(PREFIX)/bin/icebox_explain$(PY_EXE)
+-	cp icebox_asc2hlc.py $(DESTDIR)$(PREFIX)/bin/icebox_asc2hlc$(PY_EXE)
+-	cp icebox_hlc2asc.py $(DESTDIR)$(PREFIX)/bin/icebox_hlc2asc$(PY_EXE)
+-	cp icebox_colbuf.py  $(DESTDIR)$(PREFIX)/bin/icebox_colbuf$(PY_EXE)
+-	cp icebox_html.py    $(DESTDIR)$(PREFIX)/bin/icebox_html$(PY_EXE)
+-	cp icebox_maps.py    $(DESTDIR)$(PREFIX)/bin/icebox_maps$(PY_EXE)
+-	cp icebox_vlog.py    $(DESTDIR)$(PREFIX)/bin/icebox_vlog$(PY_EXE)
+-	cp icebox_stat.py    $(DESTDIR)$(PREFIX)/bin/icebox_stat$(PY_EXE)
++	mkdir -p $(DESTDIR)$(PREFIX)/share/fpga-icestorm/chipdb
++	mkdir -p $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python
++	cp chipdb-384.txt    $(DESTDIR)$(PREFIX)/share/fpga-icestorm/chipdb/
++	cp chipdb-1k.txt     $(DESTDIR)$(PREFIX)/share/fpga-icestorm/chipdb/
++	cp chipdb-8k.txt     $(DESTDIR)$(PREFIX)/share/fpga-icestorm/chipdb/
++	cp chipdb-5k.txt     $(DESTDIR)$(PREFIX)/share/fpga-icestorm/chipdb/
++	cp chipdb-lm4k.txt   $(DESTDIR)$(PREFIX)/share/fpga-icestorm/chipdb/
++	cp icebox.py         $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox.py
++	cp iceboxdb.py       $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/iceboxdb.py
++	cp icebox_chipdb.py  $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox_chipdb$(PY_EXE)
++	cp icebox_diff.py    $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox_diff$(PY_EXE)
++	cp icebox_explain.py $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox_explain$(PY_EXE)
++	cp icebox_asc2hlc.py $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox_asc2hlc$(PY_EXE)
++	cp icebox_hlc2asc.py $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox_hlc2asc$(PY_EXE)
++	cp icebox_colbuf.py  $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox_colbuf$(PY_EXE)
++	cp icebox_html.py    $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox_html$(PY_EXE)
++	cp icebox_maps.py    $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox_maps$(PY_EXE)
++	cp icebox_vlog.py    $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox_vlog$(PY_EXE)
++	cp icebox_stat.py    $(DESTDIR)$(PREFIX)/share/fpga-icestorm/python/icebox_stat$(PY_EXE)
++
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(PREFIX)/bin/icebox.py
+diff --git a/icetime/icetime.cc b/icetime/icetime.cc
+index d2363a3..3e90cb7 100644
+--- a/icetime/icetime.cc
++++ b/icetime/icetime.cc
+@@ -323,29 +323,7 @@ void read_chipdb()
+ {
+ 	char buffer[1024];
+ 
+-	if (!chipdbfile.empty()) {
+-		snprintf(buffer, 1024, "%s", chipdbfile.c_str());
+-	} else
+-	if (PREFIX[0] == '~' && PREFIX[1] == '/') {
+-		std::string homedir;
+-#ifdef _WIN32
+-		if (getenv("USERPROFILE") != nullptr) {
+-			homedir += getenv("USERPROFILE");
+-		}
+-		else {
+-			if (getenv("HOMEDRIVE") != nullptr &&
+-			    getenv("HOMEPATH") != nullptr) {
+-				homedir += getenv("HOMEDRIVE");
+-				homedir += getenv("HOMEPATH");
+-			}
+-		}
+-#else
+-		homedir += getenv("HOME");
+-#endif
+-		snprintf(buffer, 1024, "%s%s/share/" CHIPDB_SUBDIR "/chipdb-%s.txt", homedir.c_str(), PREFIX+1, config_device.c_str());
+-	} else {
+-		snprintf(buffer, 1024, PREFIX "/share/" CHIPDB_SUBDIR "/chipdb-%s.txt", config_device.c_str());
+-	}
++    snprintf(buffer, 1024, "/usr/share/fpga-icestorm/chipdb/chipdb-%s.txt", config_device.c_str());
+ 
+ 	FILE *fdb = fopen(buffer, "r");
+ 	if (fdb == nullptr) {

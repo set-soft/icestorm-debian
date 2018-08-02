@@ -1,0 +1,38 @@
+From: Ruben Undheim <ruben.undheim@gmail.com>
+Date: Fri, 13 Jul 2018 22:51:19 +0200
+Subject: Fix MD and -O0 passed as CFLAGS and CXXFLAGS
+
+---
+ config.mk | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/config.mk b/config.mk
+index 7b3b494..bfe0583 100644
+--- a/config.mk
++++ b/config.mk
+@@ -6,18 +6,18 @@ PKG_CONFIG ?= pkg-config
+ 
+ C_STD ?= c99
+ CXX_STD ?= c++11
+-ifeq ($(EMCC),1)
++#ifeq ($(EMCC),1)
+ OPT_LEVEL ?= 2
+ DBG_LEVEL ?=
+-else
+-OPT_LEVEL ?= 0
+-DBG_LEVEL ?= -ggdb
+-endif
++#else
++#OPT_LEVEL ?= 0
++#DBG_LEVEL ?= -ggdb
++#endif
+ WARN_LEVEL ?= all
+ 
+ LDLIBS = -lm -lstdc++
+-CFLAGS += -MD -O$(OPT_LEVEL) $(DBG_LEVEL) -W$(WARN_LEVEL) -std=$(C_STD) -I$(PREFIX)/include
+-CXXFLAGS += -MD -O$(OPT_LEVEL) $(DBG_LEVEL) -W$(WARN_LEVEL) -std=$(CXX_STD) -I$(PREFIX)/include
++CFLAGS += -O$(OPT_LEVEL) $(DBG_LEVEL) -W$(WARN_LEVEL) -std=$(C_STD) -I$(PREFIX)/include
++CXXFLAGS += -O$(OPT_LEVEL) $(DBG_LEVEL) -W$(WARN_LEVEL) -std=$(CXX_STD) -I$(PREFIX)/include
+ 
+ DESTDIR ?=
+ CHIPDB_SUBDIR ?= icebox
