@@ -13,11 +13,9 @@ python include path.
  icetime/icetime.cc | 24 +-----------------------
  2 files changed, 21 insertions(+), 42 deletions(-)
 
-diff --git a/icebox/Makefile b/icebox/Makefile
-index 5f4d47a..9eda354 100644
 --- a/icebox/Makefile
 +++ b/icebox/Makefile
-@@ -32,25 +32,26 @@ clean:
+@@ -32,25 +32,26 @@
  	rm -f icebox.pyc iceboxdb.pyc
  
  install: all
@@ -63,11 +61,9 @@ index 5f4d47a..9eda354 100644
  
  uninstall:
  	rm -f $(DESTDIR)$(PREFIX)/bin/icebox.py
-diff --git a/icetime/icetime.cc b/icetime/icetime.cc
-index d2363a3..3e90cb7 100644
 --- a/icetime/icetime.cc
 +++ b/icetime/icetime.cc
-@@ -323,29 +323,7 @@ void read_chipdb()
+@@ -323,29 +323,7 @@
  {
  	char buffer[1024];
  
@@ -98,3 +94,17 @@ index d2363a3..3e90cb7 100644
  
  	FILE *fdb = fopen(buffer, "r");
  	if (fdb == nullptr) {
+--- a/icetime/Makefile
++++ b/icetime/Makefile
+@@ -37,9 +37,9 @@
+ 
+ install: all
+ 	mkdir -p $(DESTDIR)$(PREFIX)/bin
+-	mkdir -p $(DESTDIR)$(PREFIX)/share/icebox
++	mkdir -p $(DESTDIR)$(PREFIX)/share/fpga-icestorm/chipdb
+ 	cp icetime$(EXE) $(DESTDIR)$(PREFIX)/bin/icetime$(EXE)
+-	cp ../icefuzz/timings_*.txt $(DESTDIR)$(PREFIX)/share/icebox/
++	cp ../icefuzz/timings_*.txt $(DESTDIR)$(PREFIX)/share/fpga-icestorm/chipdb/
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(PREFIX)/bin/icetime$(EXE)
